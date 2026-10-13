@@ -1,0 +1,19 @@
+{
+  "name": "@skillsaas/microsoft-excel",
+  "version": "0.2.1",
+  "description": "Agent skill (SKILL.md) for Microsoft Excel: read, create, edit, recalculate and verify .xlsx/.xlsm/.csv with openpyxl, xlsxwriter, pandas, Office.js, Office Scripts, VBA and Microsoft Graph. Includes safe inspect, recalc and CSV scripts.",
+  "license": "MIT",
+  "author": "Ali Tanveer",
+  "repository": { "type": "git", "url": "git+https://github.com/skillsaas/microsoft-excel.git" },
+  "homepage": "https://github.com/skillsaas/microsoft-excel#readme",
+  "bugs": { "url": "https://github.com/skillsaas/microsoft-excel/issues" },
+  "keywords": [
+    "agent-skill", "agent-skills", "skill-md", "SKILL.md", "ai-agent",
+    "claude-code", "cursor", "codex", "gemini-cli",
+    "excel", "microsoft-excel", "spreadsheet", "xlsx", "xlsm", "csv",
+    "openpyxl", "xlsxwriter", "pandas", "office-js", "office-scripts", "vba", "power-query", "microsoft-graph", "libreoffice"
+  ],
+  "files": ["SKILL.md", "references/", "scripts/*.py", "CHANGELOG.md"],
+  "engines": { "node": ">=18" },
+  "publishConfig": { "access": "public" }
+}
