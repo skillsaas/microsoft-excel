@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.3 (2026-10-13)
+Discovery only; no script or skill behaviour changed.
+- npm description rewritten as a one-sentence answer (what, which app, which agents), under 250 characters; more npm keywords and GitHub topics.
+- README opens with a TL;DR and adds "What it does" and an FAQ.
+
 ## 0.2.2 (2026-10-13)
 Fixes from the third review round (12 reviewers).
 

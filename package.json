@@ -1,18 +1,62 @@
 {
   "name": "microsoft-excel",
-  "version": "0.2.2",
-  "description": "Agent skill (SKILL.md) for Microsoft Excel: read, create, edit, recalculate and verify .xlsx/.xlsm/.csv with openpyxl, xlsxwriter, pandas, Office.js, Office Scripts, VBA and Microsoft Graph. Includes safe inspect, recalc and CSV scripts (Python).",
+  "version": "0.2.3",
+  "description": "Agent skill for Microsoft Excel for Claude Code, Cursor, Codex and other SKILL.md agents: read, edit and verify .xlsx/.xlsm/.csv with openpyxl, recalculate with LibreOffice, automate with Office.js, VBA or Graph.",
   "license": "MIT",
   "author": "Ali Tanveer",
-  "repository": { "type": "git", "url": "git+https://github.com/skillsaas/microsoft-excel.git" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skillsaas/microsoft-excel.git"
+  },
   "homepage": "https://github.com/skillsaas/microsoft-excel#readme",
-  "bugs": { "url": "https://github.com/skillsaas/microsoft-excel/issues" },
+  "bugs": {
+    "url": "https://github.com/skillsaas/microsoft-excel/issues"
+  },
   "keywords": [
-    "agent-skill", "agent-skills", "skill-md", "SKILL.md", "ai-agent",
-    "claude-code", "cursor", "codex", "gemini-cli",
-    "excel", "microsoft-excel", "spreadsheet", "xlsx", "xlsm", "csv",
-    "openpyxl", "xlsxwriter", "pandas", "office-js", "office-scripts", "vba", "power-query", "microsoft-graph", "libreoffice"
+    "agent-skill",
+    "agent-skills",
+    "skill-md",
+    "SKILL.md",
+    "ai-agent",
+    "claude-code",
+    "cursor",
+    "codex",
+    "gemini-cli",
+    "excel",
+    "microsoft-excel",
+    "spreadsheet",
+    "xlsx",
+    "xlsm",
+    "csv",
+    "openpyxl",
+    "xlsxwriter",
+    "pandas",
+    "office-js",
+    "office-scripts",
+    "vba",
+    "power-query",
+    "microsoft-graph",
+    "libreoffice",
+    "excel-skill",
+    "xlsx-skill",
+    "ai-agent-skill",
+    "claude-skills",
+    "codex-skills",
+    "excel-formulas",
+    "formula-injection",
+    "recalculate"
   ],
-  "files": ["SKILL.md", "AGENTS.md", "README.md", "LICENSE", "CHANGELOG.md", "references/", "scripts/*.py", "scripts/requirements.txt"],
-  "publishConfig": { "access": "public" }
+  "files": [
+    "SKILL.md",
+    "AGENTS.md",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "references/",
+    "scripts/*.py",
+    "scripts/requirements.txt"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }

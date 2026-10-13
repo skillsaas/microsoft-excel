@@ -4,7 +4,7 @@ description: "Use when reading, creating, editing, repairing, recalculating or a
 license: MIT
 compatibility: "Python 3.9+ with openpyxl and defusedxml for the bundled scripts; LibreOffice for headless recalculation. Excel itself is optional."
 metadata:
-  version: "0.2.2"
+  version: "0.2.3"
   updated: "2026-10-13"
   last-verified: "2026-10-13 (openpyxl 3.1.5, xlsxwriter 3.2.9, LibreOffice 25.2, Python 3.13)"
   risk: "medium"
