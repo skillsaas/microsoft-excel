@@ -1,7 +1,7 @@
 # Excel formula reference for agents
 
 ## Choose the function
-Availability: XLOOKUP, FILTER, SORT, UNIQUE, SEQUENCE, LET in Excel 2021+ and 365. LAMBDA helpers, TEXTSPLIT, VSTACK, TAKE, DROP in 365 and 2024. GROUPBY, PIVOTBY (365 Current Channel since Sep 2024; Microsoft's page also lists 2021 and 2024, treat as unverified) and REGEX* (365 only). If the reader's version is unknown, use the right column.
+Availability: XLOOKUP, FILTER, SORT, UNIQUE, SEQUENCE, LET in Excel 2021+ and 365. LAMBDA helpers, TEXTSPLIT, VSTACK, TAKE, DROP in 365 and 2024. GROUPBY, PIVOTBY (Microsoft documents 365, 2024 and 2021; real availability varies by version and update channel, so verify before relying on it) and REGEX* (365 only). If the reader's version is unknown, use the right column.
 
 | Goal | Modern | Compatible with 2016/2019 |
 | :--- | :--- | :--- |

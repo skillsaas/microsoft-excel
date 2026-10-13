@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.2.2 (2026-10-13)
+Fixes from the third review round (12 reviewers).
+
+### Security
+- `recalc.py --sandboxed` is now documented as operator-only in SKILL.md, security.md, AGENTS.md, README and the script help: an agent must never pass it on its own judgment or to get past a refusal. Under `--sandboxed` the script first tries 1-second TCP connects to public addresses and refuses (exit 2) if any succeeds.
+- `recalc.py` runs LibreOffice on a private copy of the input, with HOME, TMPDIR and the working directory in a temp folder, so relative link paths cannot reach the user's folders. security.md documents that a network namespace does not hide local files or filesystem sockets, and recommends a container or bwrap that mounts only the input. Tested: `WEBSERVICE` of `file://` and relative paths, `FILTERXML`, and `INDIRECT` of a `file://` target bring no file content into the output.
+- On timeout `recalc.py` kills the whole LibreOffice process group, not just the first process.
+- Refusals and setup errors now exit 2 (they exited 1 before). The no-isolation error mentions AppArmor on Ubuntu 24.04+ and tells agents not to add `--sandboxed`.
+
+### Added
+- `.xlsm` recalc warning (SKILL.md section 5, security.md, script help): LibreOffice may not keep the VBA project, form controls or ActiveX byte for byte. `recalc.py` prints `vba_project=identical|changed|missing` and exits 1 on changed or missing.
+- `scripts/requirements.txt` (openpyxl, defusedxml).
+- security.md: static inspection, library edits and recalculation as three separate risk levels.
+- Tests (31 run, 1 skipped where `unshare` works): `--sandboxed` refusal when a connection works, `--sandboxed` inside a no-network namespace, local-file canary, `.xlsm` VBA status, `vba_status`, help text, all CSV formula triggers stay literal, literal `=text` survives reload, package name and version consistency, package files. The test runner prints SKIP lines and a summary.
+
+### Fixed
+- recipes.md contradicted itself on charts (table: kept but rebuilt; chart section: dropped). Both now say kept but rebuilt, as tested, with a caveat that Excel-authored charts may lose more. The matrix states it was tested on an xlsxwriter-authored file, not an Excel-authored one.
+- Pivot wording softened: openpyxl has limited read and preservation support, but no reliable editing API.
+- recipes.md pivot section: GROUPBY and PIVOTBY become `#NAME?` under `recalc.py`.
+- ooxml.md: built-in number formats 18 to 21 are times; remove `calcChain.xml` only when it is corrupt.
+
+### Changed
+- npm package: `@skillsaas/microsoft-excel` with `publishConfig.access` public. `files` now lists README, AGENTS.md, LICENSE and `scripts/requirements.txt`. `engines.node` removed (nothing runs on Node).
+- SKILL.md: shorter description with a "not needed" line; ExcelJS dropped from description, tags, table and README (no recipe covered it); `metadata.last-verified`; LibreOffice "7.6+ (tested 25.2)"; inspector exit codes and JSON contents without `--show-links`; a failed baseline inspection makes preservation inconclusive; inventory comparison is triage, not proof; `.xlsm` checklist item; `read_only`/`write_only` limits; compare with real Excel for important results; the "any format" row qualified.
+- formulas.md PIVOTBY wording follows Microsoft's documented versions with a verify-first note. CSV apostrophe prefix called a display-level mitigation.
+- README: `npm install` line, catalog marked planned, `--sandboxed` note.
+
 ## 0.2.1 (2026-10-13)
 Fixes from the second review round (12 reviewers).
 

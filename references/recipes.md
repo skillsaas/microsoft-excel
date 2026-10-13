@@ -3,7 +3,7 @@
 Blocks were tested with openpyxl 3.1.5, xlsxwriter 3.2.9, pandas 3.0, msoffcrypto-tool 6.0 and python-calamine (exact versions and dates: CHANGELOG.md). Work on a copy of the user's file.
 
 ## What survives an openpyxl load and save
-Tested with openpyxl 3.1.5 (plus Pillow) on a workbook written by xlsxwriter 3.2.9. Other versions, and files saved by Excel with newer extensions, can behave differently, so inventory before and after every edit (`inspect_xlsx.py --json`, compare the reports).
+Tested with openpyxl 3.1.5 (plus Pillow) on a workbook written by xlsxwriter 3.2.9, not on a file saved by Excel. Excel-authored files (chart styles, `extLst` extensions, pivot caches, slicers) and other openpyxl versions can behave differently, so inventory before and after every edit (`inspect_xlsx.py --json`, compare the reports).
 
 | Feature | Result in the test | Treat as |
 | :--- | :--- | :--- |
@@ -11,15 +11,15 @@ Tested with openpyxl 3.1.5 (plus Pillow) on a workbook written by xlsxwriter 3.2
 | Tables, defined names, data validation, conditional formats (cell rules, data bars) | kept | usually safe; Excel 2010+ extension rules (`extLst`) were not tested |
 | Comments | kept, rewritten as new parts | text kept; size and position may change |
 | Images | kept only with Pillow installed | may be lost |
-| Charts | kept but rebuilt by openpyxl (chart XML changed) | formatting may change |
+| Charts | kept but rebuilt by openpyxl (chart XML changed) | kept but altered: formatting may change; Excel-authored charts may lose more |
 | Cached formula values | **dropped** (`data_only` reads `None` after save) | recalculate before reading values |
 | Pivot tables and caches, slicers, timelines, sparklines, form controls, ActiveX, unknown parts | not tested | may be lost or altered; edit through Excel instead |
 
 If the workbook has charts, images, pivots, slicers or unusual parts and the user cannot accept a change to them, do not save it with openpyxl. Use Excel automation, or keep the original and report the limit.
 
 ## Pivot tables
-openpyxl **cannot create** pivot tables and keeps existing ones without letting you edit them. Options:
-1. Need a summary and not a live pivot: compute it with pandas and write the values (below), or use `SUMIFS` formulas, or `GROUPBY`/`PIVOTBY` if every reader has Microsoft 365.
+openpyxl **cannot create** pivot tables. It has limited read and preservation support for existing ones (it can load and write back the pivot and cache objects), but no reliable general editing API, and pivots were not in our round-trip test. Treat edits to pivot definitions, caches, slicers and timelines as unsupported and use Excel automation. Options:
+1. Need a summary and not a live pivot: compute it with pandas and write the values (below), or use `SUMIFS` formulas, or `GROUPBY`/`PIVOTBY` if every reader has Microsoft 365. LibreOffice lacks GROUPBY and PIVOTBY, so `recalc.py` turns them into `#NAME?`; do not use them when values must come from recalc.
 2. Need a real PivotTable: create it through Excel, using Office.js `worksheet.pivotTables.add(name, sourceRange, destRange)`, COM/xlwings, or by hand.
 ```python
 import pandas as pd
@@ -45,7 +45,7 @@ chart.set_categories(cats)
 ws.add_chart(chart, "H2")
 wb.save("sales.edited.xlsx")
 ```
-Charts already in a file that openpyxl loads are dropped on save. If the file has charts (`inspect_xlsx.py` shows `charts > 0`), edit with Excel or write the changes through Graph instead.
+Charts already in a file that openpyxl loads are kept but rebuilt on save (see the table above): in our xlsxwriter-authored test the chart survived with rewritten XML. Excel-authored charts with styles, combo types or extensions may lose formatting or parts. If the file has charts (`inspect_xlsx.py` shows `charts > 0`) and their look matters, edit with Excel or write the changes through Graph instead.
 
 ## Data validation (dropdown)
 ```python
