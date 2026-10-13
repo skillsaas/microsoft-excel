@@ -1,5 +1,5 @@
 {
-  "name": "@skillsaas/microsoft-excel",
+  "name": "microsoft-excel",
   "version": "0.2.2",
   "description": "Agent skill (SKILL.md) for Microsoft Excel: read, create, edit, recalculate and verify .xlsx/.xlsm/.csv with openpyxl, xlsxwriter, pandas, Office.js, Office Scripts, VBA and Microsoft Graph. Includes safe inspect, recalc and CSV scripts (Python).",
   "license": "MIT",

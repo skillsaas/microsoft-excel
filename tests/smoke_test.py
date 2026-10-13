@@ -134,7 +134,7 @@ def main():
     pkg = json.loads((ROOT / "package.json").read_text())
     skill = (ROOT / "SKILL.md").read_text()
     ver = re.search(r'version: "([^"]+)"', skill).group(1)
-    check("package name and versions agree", pkg["name"] == "@skillsaas/microsoft-excel" and pkg.get("publishConfig", {}).get("access") == "public" and pkg["version"] == ver
+    check("package name and versions agree", pkg["name"] == "microsoft-excel" and pkg.get("publishConfig", {}).get("access") == "public" and pkg["version"] == ver
           and f"## {ver} " in (ROOT / "CHANGELOG.md").read_text())
     files = pkg["files"]
     check("package files cover SKILL.md, references and scripts",

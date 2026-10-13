@@ -1,6 +1,6 @@
 # Microsoft Excel agent skill
 
-`@skillsaas/microsoft-excel` is an [Agent Skills](https://agentskills.io/specification) skill that teaches AI coding agents (Claude Code, Cursor, Codex, Gemini CLI and others) to read, create, edit, recalculate and verify Excel workbooks without breaking them.
+`microsoft-excel` is an [Agent Skills](https://agentskills.io/specification) skill that teaches AI coding agents (Claude Code, Cursor, Codex, Gemini CLI and others) to read, create, edit, recalculate and verify Excel workbooks without breaking them.
 
 Unofficial. Microsoft and Excel are trademarks of Microsoft Corporation. This project is not affiliated with or endorsed by Microsoft.
 
@@ -15,7 +15,7 @@ Unofficial. Microsoft and Excel are trademarks of Microsoft Corporation. This pr
 ## Install
 ```bash
 npx skills add skillsaas/microsoft-excel            # vercel-labs skills CLI, reads SKILL.md at the repo root
-npm install @skillsaas/microsoft-excel              # files land in node_modules/@skillsaas/microsoft-excel/
+npm install microsoft-excel              # files land in node_modules/microsoft-excel/
 # Planned, not yet published: npx @skillsaas/cli add microsoft-excel --claude
 ```
 Manual: copy `SKILL.md`, `references/` and `scripts/` into your agent's skills folder, for example `~/.claude/skills/microsoft-excel/`. Keep the folder name `microsoft-excel`. Typical locations: Claude Code `~/.claude/skills/`, other agents in their own skills folder (check your agent's docs). SKILL.md calls scripts as `python <skill-dir>/scripts/NAME.py`, so they work whatever the agent's working directory is.
@@ -36,7 +36,7 @@ Manual: copy `SKILL.md`, `references/` and `scripts/` into your agent's skills f
 Script dependencies: Python 3.9+, `pip install -r scripts/requirements.txt` (openpyxl, defusedxml), plus LibreOffice for `recalc.py`. The tests in `tests/smoke_test.py` are in the repo only, not in the npm package; run `python tests/smoke_test.py` (it prints PASS, FAIL and SKIP lines and a summary).
 
 ## Discovery metadata
-- Skill name: `microsoft-excel` (same as the folder, the GitHub repo `skillsaas/microsoft-excel` and the npm package `@skillsaas/microsoft-excel`).
+- Skill name: `microsoft-excel` (same as the folder, the GitHub repo `skillsaas/microsoft-excel` and the npm package `microsoft-excel`).
 - Formats: xlsx, xlsm, xlsb, xls, csv. Tested with openpyxl 3.1.5, xlsxwriter 3.2.9, LibreOffice 25.2, Python 3.13; pandas 3.0.
 - Catalog of all skillsaas skills (planned, not yet published): https://github.com/skillsaas/index
 - recalc.py `--sandboxed` is for operators only: agents must never pass it themselves (`references/security.md`).

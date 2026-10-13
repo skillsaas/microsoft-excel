@@ -22,7 +22,7 @@ Fixes from the third review round (12 reviewers).
 - ooxml.md: built-in number formats 18 to 21 are times; remove `calcChain.xml` only when it is corrupt.
 
 ### Changed
-- npm package: `@skillsaas/microsoft-excel` with `publishConfig.access` public. `files` now lists README, AGENTS.md, LICENSE and `scripts/requirements.txt`. `engines.node` removed (nothing runs on Node).
+- npm package: `microsoft-excel` with `publishConfig.access` public. `files` now lists README, AGENTS.md, LICENSE and `scripts/requirements.txt`. `engines.node` removed (nothing runs on Node).
 - SKILL.md: shorter description with a "not needed" line; ExcelJS dropped from description, tags, table and README (no recipe covered it); `metadata.last-verified`; LibreOffice "7.6+ (tested 25.2)"; inspector exit codes and JSON contents without `--show-links`; a failed baseline inspection makes preservation inconclusive; inventory comparison is triage, not proof; `.xlsm` checklist item; `read_only`/`write_only` limits; compare with real Excel for important results; the "any format" row qualified.
 - formulas.md PIVOTBY wording follows Microsoft's documented versions with a verify-first note. CSV apostrophe prefix called a display-level mitigation.
 - README: `npm install` line, catalog marked planned, `--sandboxed` note.
